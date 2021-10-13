@@ -44,7 +44,7 @@ export default {
         async loeschen(car) {
         await axios ({
              method: "DELETE",
-             url: 'localhost:3000/cars/' + car.id,
+             url: 'http://localhost:3000/cars/' + car.id,
              'content-type': 'application/json',
              data: car,
         })

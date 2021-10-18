@@ -18,8 +18,8 @@
           <tr>
             <td>{{ filtration.price }}</td>
             <td>{{ filtration.miles }}</td>
-            <td>{{ filtration.yearOfMake }}</td>
-            <td>{{ filtration.owner.firstName }} {{ filtration.owner.lastName }}</td>
+            <td>{{ filtration.year_of_make }}</td>
+            <td>{{ filtration.first_name }} {{ filtration.last_name }}</td>
           </tr>
         </tbody>
       </v-simple-table>
@@ -28,6 +28,8 @@
         <v-btn class=" purple 2 white--text" to="/">Go back</v-btn>
         <v-spacer></v-spacer>
         <v-btn class=" red darken 2 white--text" @click="buy" v-if="filtration.status != 'sold'">Order</v-btn>
+        <v-spacer></v-spacer>
+        <v-btn class=" red darken 2 white--text" @click="deleted" >Delete</v-btn>
       </div>
     </v-card>
   </div>
@@ -63,6 +65,12 @@ export default {
         data: { status: "sold" }
       });
       this.$router.go();
+    },
+    async deleted() {
+      await axios({
+        method: "DELETE",
+        url: `http://localhost:3000/cars/${this.id}`,
+      })
     }
   }
 };

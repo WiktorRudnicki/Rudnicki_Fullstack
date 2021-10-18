@@ -1,7 +1,7 @@
 const db = require('../db/index');
 
 async function getCarsDB() {
-  const result = await db.query('SELECT * from cars');
+  const result = await db.query('SELECT title, status, price, image, miles, year_of_make, description, owner as id, first_name, last_name from cars join owner on owner = owner.id');
   return result.rows;
 }
 
@@ -11,7 +11,7 @@ async function changeStatusCarDB(id, status) {
 }
 
 async function deleteCarDB(id) {
-  await db.query('delete from cars where id = $1'[id]);
+  await db.query('delete from cars where owner = $1'[id]);
   return true;
 }
 

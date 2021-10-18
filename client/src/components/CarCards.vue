@@ -8,11 +8,11 @@
                 </h1>
                 <br>
                 <span>
-                    Owner: {{car.owner.firstName}} {{car.owner.lastName}}
+                    Owner: {{car.first_name}} {{car.last_name}}
                 </span>
                 <br>
                 <span>
-                    Year: {{car.yearOfMake}}
+                    Year: {{car.year_of_make}}
                 </span>
                 <span>
                     Miles: {{car.miles}}

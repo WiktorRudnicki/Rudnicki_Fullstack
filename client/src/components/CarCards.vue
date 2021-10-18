@@ -25,8 +25,8 @@
                     {{car.description}}
                 </span>
                 <br>
-                <v-btn @click="loeschen(car)" class="red" style="width: 100px">
-                    DELETE
+                <v-btn :to="'/details/' + car.id" v-if="car.status != 'sold'" class="red" style="width: 100px">
+                    Details
                 </v-btn>
             </v-card>
         </v-row>
@@ -40,17 +40,6 @@ export default {
         cars: [],
         
     }),
-    methods: {
-        async loeschen(car) {
-        await axios ({
-             method: "DELETE",
-             url: 'http://localhost:3000/cars/' + car.id,
-             'content-type': 'application/json',
-             data: car,
-        })
-    },
-
-    },
     async created() {
         let response = await axios.get('http://localhost:3000/cars');
         this.cars = response.data;

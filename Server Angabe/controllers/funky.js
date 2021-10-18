@@ -11,6 +11,7 @@ async function changeStatusCar(req, res) {
 }
 
 async function deleteCar(req, res) {
+  console.log(req.params.id);
   const result = await deleteCarDB(req.params.id);
   res.status(200).json(result);
 }
